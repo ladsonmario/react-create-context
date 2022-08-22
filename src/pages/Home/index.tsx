@@ -39,6 +39,10 @@ export const Home = () => {
                     email: emailInput
                 }
             });
+            setNameInput('');
+            setAgeInput(0);
+            setContactInput(0);
+            setEmailInput('');            
         } else {
             alert('Preencha todos os campos!')
         }

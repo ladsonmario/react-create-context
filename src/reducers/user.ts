@@ -40,8 +40,8 @@ export const userReducer = (state: UserType[], action: reducerActionType) => {
         case 'DEL_USER':
             if(action.payload.id) {
                 let cloneState = [...state];
-                cloneState.filter(item => item.id !== action.payload.id);
-                return cloneState;
+                const newState = cloneState.filter(item => item.id !== action.payload.id);
+                return newState;
             }
         break;
     }

@@ -1,14 +1,11 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { Button } from '../../components/Button';
 import { Context } from '../../contexts/Context';
-import { UserType } from '../../reducers/user';
 import DelImg from '../../images/del.svg';
 import * as C from './styles';
 
 export const Users = () => {
-    const { state, dispatch } = useContext(Context);
-
-    const [list] = useState<UserType[]>(state.user);
+    const { state, dispatch } = useContext(Context);        
 
     const handleDelUser = (id: string) => {
         dispatch({
@@ -31,7 +28,7 @@ export const Users = () => {
                     </C.TR>
                 </C.Thead>
                 <C.Tbody>
-                    {list.map((item, index) => (
+                    {state.user.map((item, index) => (
                         <C.TR key={index}>
                             <C.TD>{item.name}</C.TD>
                             <C.TD>{item.age} anos</C.TD>
