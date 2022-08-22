@@ -1,25 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from 'react';
+import * as C from './App.styles';
+import { Context } from './contexts/Context';
+import MoonImg from './images/moon.png';
+import SunImg from './images/sun.png';
+import { MainRouter } from './routes/MainRouter';
 
 function App() {
+  const { state, dispatch } = useContext(Context);
+
+  const handleThemeSwitch = () => {
+    if(state.theme.status === 'dark') {
+      dispatch({
+        type: 'SWITCH_THEME',
+        payload: {
+          status: 'light',
+          bgColor: '#ddd',
+          boxShadow: '0 0 10px #333',
+          color: '#333'
+        }
+      });
+    } else {
+      dispatch({
+        type: 'SWITCH_THEME',
+        payload: {
+          status: 'dark',
+          bgColor: '#333',
+          boxShadow: '0 0 10px #ddd',
+          color: '#fff'
+        }
+      });
+    }
+    
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <C.Body themeOptions={state.theme}>
+      <C.Container themeOptions={state.theme}>
+        <C.Header>
+          <C.Logo>DevCadastro</C.Logo>
+          <C.Theme onClick={handleThemeSwitch}>
+            <C.ThemeImg src={MoonImg} alt="" />
+              <C.ThemeContainer>
+                <C.ThemeCircle themeOptions={state.theme} />
+                </C.ThemeContainer>
+            <C.ThemeImg src={SunImg} alt="" />
+          </C.Theme>
+        </C.Header>
+
+        <MainRouter />
+      </C.Container>
+    </C.Body>    
   );
 }
 
