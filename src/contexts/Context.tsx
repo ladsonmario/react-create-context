@@ -4,7 +4,7 @@ import { ThemeType, themeInitialState, themeReducer } from '../reducers/theme';
 import { reducerActionType } from '../types/reducerActionType';
 
 type initialStateType = {
-    user: UserType;
+    user: UserType[];
     theme: ThemeType;
 }
 

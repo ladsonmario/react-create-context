@@ -7,6 +7,10 @@ export const Body = styled.div<ThemeOptionsType>`
     background-color: ${props => props.themeOptions.bgColor};
     color: ${props => props.themeOptions.color};
     min-height: 100vh;
+
+    a {
+        color: ${props => props.themeOptions.color};
+    }
 `;
 
 export const Container = styled.div<ThemeOptionsType>`
@@ -18,12 +22,19 @@ export const Container = styled.div<ThemeOptionsType>`
 `;
 
 export const Header = styled.header`
+    display: flex;   
+    flex-direction: column;   
+`;
+
+export const Logo = styled.div`    
     display: flex;
     justify-content: space-between;
     align-items: center;
 `;
 
-export const Logo = styled.div``;
+export const LogoText = styled.div`
+    font-size: 25px;
+`;
 
 export const Theme = styled.div`
     display: flex;
@@ -52,10 +63,16 @@ export const ThemeCircle = styled.div<ThemeOptionsType>`
     height: 20px;
     border-radius: 50%;
     background-color: ${props => props.themeOptions.bgColor};
-    position: absolute;
-    transition: all ease .5s;
+    position: absolute;    
     right: ${props => props.themeOptions.status === 'dark' ? '20px' : '0'};
     left: ${props => props.themeOptions.status === 'light' ? '20px' : '0'};
     border: 1px solid ${props => props.themeOptions.color};
+    transition: all ease .5s;
+`;
+
+export const Menu = styled.div``;
+
+export const Line = styled.hr`
+    margin: 20px 0;
 `;
 

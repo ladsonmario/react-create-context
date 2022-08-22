@@ -6,24 +6,25 @@ export type UserType = {
     name: string;
     age: number;
     contact: number;
+    email: string;
 }
 
-export const userInitialState: UserType = {
-    id: v4(),
-    name: '',
-    age: 0,
-    contact: 0
-}
+export const userInitialState: UserType[] = [];
 
-export const userReducer = (state: UserType, action: reducerActionType) => {
+export const userReducer = (state: UserType[], action: reducerActionType) => {
     switch(action.type) {
         case 'ADD_USER':
-            return {
-                ...state,
-                name: action.payload.name,
-                age: action.payload.age,
-                contact: action.payload.contact 
-            };
+            if(action.payload.name && action.payload.age && action.payload.contact && action.payload.email) {
+                const cloneState = [...state];
+                cloneState.push({
+                    id: v4(),
+                    name: action.payload.name,
+                    age: action.payload.age,
+                    contact: action.payload.contact,
+                    email: action.payload.email
+                });
+                return cloneState;
+            }            
         break;
         case 'EDIT_USER':
             if(action.payload.id) {
@@ -31,10 +32,18 @@ export const userReducer = (state: UserType, action: reducerActionType) => {
                     ...state,
                     name: action.payload.name,
                     age: action.payload.age,
-                    contact: action.payload.contact 
+                    contact: action.payload.contact,
+                    email: action.payload.email
                 }; 
             }
-        break;        
+        break;  
+        case 'DEL_USER':
+            if(action.payload.id) {
+                let cloneState = [...state];
+                cloneState.filter(item => item.id !== action.payload.id);
+                return cloneState;
+            }
+        break;
     }
 
     return state;
