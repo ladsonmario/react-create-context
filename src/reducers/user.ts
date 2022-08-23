@@ -30,9 +30,11 @@ export const userReducer = (state: UserType[], action: reducerActionType) => {
 
                 const index = cloneState.findIndex(item => item.id === action.payload.id);
 
-                cloneState[index].name = action.payload.name;
-                cloneState[index].age = action.payload.age;
-                cloneState[index].contact = action.payload.contact; 
+                if(index !== -1) {
+                    cloneState[index].name = action.payload.name;
+                    cloneState[index].age = action.payload.age;
+                    cloneState[index].contact = action.payload.contact; 
+                }
 
                 return cloneState;
             }                 
