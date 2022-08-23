@@ -60,9 +60,7 @@ export const Users = () => {
         }        
     }
 
-    const handleCancel = () => {
-        setEdit(false);
-    }
+    const handleCancel = () => setEdit(false);
 
     return (
         <C.Container>
