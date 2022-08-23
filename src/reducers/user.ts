@@ -32,10 +32,7 @@ export const userReducer = (state: UserType[], action: reducerActionType) => {
 
                 cloneState[index].name = action.payload.name;
                 cloneState[index].age = action.payload.age;
-                cloneState[index].contact = action.payload.contact;
-
-                
-                console.log(index);
+                cloneState[index].contact = action.payload.contact; 
 
                 return cloneState;
             }                 

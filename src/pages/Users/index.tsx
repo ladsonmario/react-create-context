@@ -44,12 +44,12 @@ export const Users = () => {
         setContactInput(item.contact);                
     }
 
-    const handleSalve = (item: UserType) => {  
-        if(item.id) {                        
+    const handleSalve = (id: string) => {  
+        if(id) {                        
             dispatch({
                 type: 'EDIT_USER',
                 payload: { 
-                    id: item.id,                   
+                    id,                   
                     name: nameInput,
                     age: ageInput,
                     contact: contactInput
@@ -110,7 +110,7 @@ export const Users = () => {
                                             <Input type="number" placeholder="Sua idade" value={ageInput} onChange={handleAgeInput} />
                                             <Input type="number" placeholder="Seu contato" value={contactInput} onChange={handleContactInput} />
                                             <C.EditDiv>
-                                                <Button content="Salvar" bgColorButton="#2E9AFE" icon={EditImg} onClick={() => handleSalve(item)} />
+                                                <Button content="Salvar" bgColorButton="#2E9AFE" icon={EditImg} onClick={() => handleSalve(item.id)} />
                                                 <Button content="Cancelar" bgColorButton="#2E9AFE" icon={CancelImg} onClick={handleCancel} />
                                             </C.EditDiv>                                            
                                         </C.Edit>
