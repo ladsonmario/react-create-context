@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { Context } from '../../contexts/Context';
 import * as C from './styles';
 
 type Props = {
@@ -8,8 +10,10 @@ type Props = {
 }
 
 export const Button = ({ content, icon, bgColorButton, onClick }: Props) => {
+    const { state } = useContext(Context);
+
     return (
-        <C.Button onClick={onClick} bgColor={bgColorButton}>
+        <C.Button onClick={onClick} bgColor={bgColorButton} themeOptions={state.theme}>
             {icon &&
                 <C.ButtonIcon src={icon} alt="" />
             }

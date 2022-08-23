@@ -30,6 +30,7 @@ export const Logo = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 `;
 
 export const LogoText = styled.div`
@@ -70,9 +71,20 @@ export const ThemeCircle = styled.div<ThemeOptionsType>`
     transition: all ease .5s;
 `;
 
-export const Menu = styled.div``;
+export const Menu = styled.div`
+    div {
+        margin: 0;  
+        margin-right: 10px;
+    }
+`;
 
 export const Line = styled.hr`
     margin: 20px 0;
 `;
 
+export const Footer = styled.footer`
+    text-align: center;
+    margin-bottom: 10px;
+`;
+
+export const Link = styled.a``;

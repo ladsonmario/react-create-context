@@ -38,11 +38,16 @@ export const Home = () => {
                     contact: contactInput,
                     email: emailInput
                 }
-            });
+            });    
+            
             setNameInput('');
             setAgeInput(0);
             setContactInput(0);
-            setEmailInput('');            
+            setEmailInput('');
+
+            setTimeout(()=>{
+                alert('Usuário cadastrado com sucesso, verifique a Lista de Usuários!');            
+            }, 100);            
         } else {
             alert('Preencha todos os campos!')
         }

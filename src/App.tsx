@@ -53,7 +53,7 @@ function App() {
           </C.Logo>
           <C.Menu>
             <Link to="/"><Button content="Área de Cadastro" bgColorButton="#00ADB5" icon={RegistrationImg} /></Link>
-            <Link to="/users"><Button content="Listar Usuários" bgColorButton="#00ADB5" icon={ListImg} /></Link>
+            <Link to="/users"><Button content="Lista de Usuários" bgColorButton="#00ADB5" icon={ListImg} /></Link>
           </C.Menu> 
 
         </C.Header>
@@ -63,6 +63,11 @@ function App() {
         <MainRouter />
 
         <C.Line />
+
+        <C.Footer>
+          © Copyright - 
+          <C.Link href="https://github.com/ladsonmario" target="_blank"> Ladson</C.Link>
+        </C.Footer>
       </C.Container>
     </C.Body>    
   );
