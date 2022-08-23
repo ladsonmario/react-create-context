@@ -13,6 +13,7 @@ export const Users = () => {
     const { state, dispatch } = useContext(Context);   
     
     const [edit, setEdit] = useState<boolean>(false);
+    const [getId, setGetId] = useState<string>('');
     const [nameInput, setNameInput] = useState<string>('');
     const [ageInput, setAgeInput] = useState<number>(0);
     const [contactInput, setContactInput] = useState<number>(0);
@@ -41,23 +42,22 @@ export const Users = () => {
 
         setNameInput(item.name);
         setAgeInput(item.age);
-        setContactInput(item.contact);                
+        setContactInput(item.contact); 
+        setGetId(item.id);
     }
 
-    const handleSalve = (id: string) => {  
-        if(id) {                        
-            dispatch({
-                type: 'EDIT_USER',
-                payload: { 
-                    id,                   
-                    name: nameInput,
-                    age: ageInput,
-                    contact: contactInput
-                }            
-            });
+    const handleSalve = () => {                                
+        dispatch({
+            type: 'EDIT_USER',
+            payload: { 
+                id: getId,                   
+                name: nameInput,
+                age: ageInput,
+                contact: contactInput
+            }            
+        });
     
-            setEdit(false);
-        }        
+        setEdit(false);
     }
 
     const handleCancel = () => setEdit(false);
@@ -100,23 +100,23 @@ export const Users = () => {
                                         <Button bgColorButton="#E16767" icon={DelImg} onClick={() => handleDelUser(item.id)} />
                                         <Button bgColorButton="#2E9AFE" icon={EditImg} onClick={() => handleEditUser(item)} />
                                     </C.TD>
-                                </C.TDIV>
-                                    {edit &&
-                                        <C.Edit themeOptions={state.theme}>
-                                            <C.EditTitle>Editar Cadastro</C.EditTitle>
-                                            <Input type="text" placeholder="Seu nome" value={nameInput} onChange={handleNameInput} />
-                                            <Input type="number" placeholder="Sua idade" value={ageInput} onChange={handleAgeInput} />
-                                            <Input type="number" placeholder="Seu contato" value={contactInput} onChange={handleContactInput} />
-                                            <C.EditDiv>
-                                                <Button content="Salvar" bgColorButton="#2E9AFE" icon={EditImg} onClick={() => handleSalve(item.id)} />
-                                                <Button content="Cancelar" bgColorButton="#2E9AFE" icon={CancelImg} onClick={handleCancel} />
-                                            </C.EditDiv>                                            
-                                        </C.Edit>
-                                    }
+                                </C.TDIV>                                    
                             </C.TR>                            
-                        ))}
+                        ))}                        
                     </C.Tbody>            
                 </C.TableUsers>
+            }
+            {edit &&
+                <C.Edit themeOptions={state.theme}>
+                    <C.EditTitle>Editar Cadastro</C.EditTitle>
+                    <Input type="text" placeholder="Seu nome" value={nameInput} onChange={handleNameInput} />
+                    <Input type="number" placeholder="Sua idade" value={ageInput} onChange={handleAgeInput} />
+                    <Input type="number" placeholder="Seu contato" value={contactInput} onChange={handleContactInput} />
+                    <C.EditDiv>
+                        <Button content="Salvar" bgColorButton="#2E9AFE" icon={EditImg} onClick={handleSalve} />
+                        <Button content="Cancelar" bgColorButton="#2E9AFE" icon={CancelImg} onClick={handleCancel} />
+                    </C.EditDiv>                                            
+                </C.Edit>
             }
             {!state.user[0] &&
                 <C.Empty>
