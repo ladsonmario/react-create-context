@@ -5,13 +5,15 @@ export type ThemeType = {
     bgColor: '#333' | '#ddd';
     boxShadow: '0 0 10px #ddd' | '0 0 10px #333';
     color: '#fff' | '#333';
+    bgColorTransparent: 'rgba(3,3,3,0.7)' | 'rgba(255,255,255,0.65)';
 }
 
 export const themeInitialState: ThemeType = {
     status: 'dark',
     bgColor: '#333',
     boxShadow: '0 0 10px #ddd',
-    color: '#fff'
+    color: '#fff',
+    bgColorTransparent: 'rgba(3,3,3,0.7)'
 }
 
 export const themeReducer = (state: ThemeType, action: reducerActionType) => {

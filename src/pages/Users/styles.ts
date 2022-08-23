@@ -62,3 +62,29 @@ export const EmptyImg = styled.img`
     max-height: 500px;
     object-fit: contain;
 `;
+
+export const Edit = styled.div<themeOptionsType>`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: ${props => props.themeOptions.bgColorTransparent};
+    color: #fff;
+`;
+
+export const EditTitle = styled.span`
+    font-size: 25px;
+    margin-bottom: 20px;
+`;
+
+export const EditDiv = styled.div`
+    display: flex;
+`;

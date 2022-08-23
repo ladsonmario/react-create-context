@@ -6,7 +6,7 @@ import { Button } from './components/Button';
 import MoonImg from './images/moon.png';
 import SunImg from './images/sun.png';
 import ListImg from './images/list.svg';
-import RegistrationImg from './images/registration.svg';
+import DocImg from './images/doc.svg';
 import { Link } from 'react-router-dom';
 
 function App() {
@@ -20,7 +20,8 @@ function App() {
           status: 'light',
           bgColor: '#ddd',
           boxShadow: '0 0 10px #333',
-          color: '#333'
+          color: '#333',
+          bgColorTransparent: 'rgba(255,255,255,0.65)'
         }
       });
     } else {
@@ -30,7 +31,8 @@ function App() {
           status: 'dark',
           bgColor: '#333',
           boxShadow: '0 0 10px #ddd',
-          color: '#fff'
+          color: '#fff',
+          bgColorTransparent: 'rgba(3,3,3,0.7)'
         }
       });
     }
@@ -52,7 +54,7 @@ function App() {
             </C.Theme>            
           </C.Logo>
           <C.Menu>
-            <Link to="/"><Button content="Área de Cadastro" bgColorButton="#00ADB5" icon={RegistrationImg} /></Link>
+            <Link to="/"><Button content="Área de Cadastro" bgColorButton="#00ADB5" icon={DocImg} /></Link>
             <Link to="/users"><Button content="Lista de Usuários" bgColorButton="#00ADB5" icon={ListImg} /></Link>
           </C.Menu> 
 

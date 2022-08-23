@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Button } from '../../components/Button';
+import { Input } from '../../components/Input/styles';
 import { Context } from '../../contexts/Context';
 import OkImg from '../../images/ok.svg';
 import * as C from './styles';
@@ -9,8 +10,7 @@ export const Home = () => {
 
     const [nameInput, setNameInput] = useState<string>('');
     const [ageInput, setAgeInput] = useState<number>(0);
-    const [contactInput, setContactInput] = useState<number>(0);
-    const [emailInput, setEmailInput] = useState<string>('');
+    const [contactInput, setContactInput] = useState<number>(0);    
 
     const handleNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNameInput( e.target.value );
@@ -24,26 +24,21 @@ export const Home = () => {
         setContactInput( parseInt(e.target.value) );
     }
 
-    const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmailInput( e.target.value );
-    }
-
     const handleAddUser = () => {
-        if(nameInput && ageInput && contactInput && emailInput) {
+        if(nameInput && ageInput && contactInput) {
             dispatch({
                 type: 'ADD_USER',
                 payload: {
                     name: nameInput,
                     age: ageInput,
-                    contact: contactInput,
-                    email: emailInput
+                    contact: contactInput
+                    
                 }
             });    
             
             setNameInput('');
             setAgeInput(0);
-            setContactInput(0);
-            setEmailInput('');
+            setContactInput(0);            
 
             setTimeout(()=>{
                 alert('Usuário cadastrado com sucesso, verifique a Lista de Usuários!');            
@@ -57,10 +52,9 @@ export const Home = () => {
         <C.Container>
             <C.H2>Formulário de Cadastro</C.H2>
             <C.Form>
-                <C.Input type="text" placeholder="Seu nome" value={nameInput === '' ? '' : nameInput} onChange={handleNameInput} />
-                <C.Input type="number" placeholder="Sua idade" value={ageInput === 0 ? '' : ageInput} onChange={handleAgeInput} />
-                <C.Input type="number" placeholder="Seu contato" value={contactInput === 0 ? '' : contactInput} onChange={handleContactInput} />                
-                <C.Input type="email" placeholder="Seu e-mail" value={emailInput === '' ? '' : emailInput} onChange={handleEmailInput} /> 
+                <Input type="text" placeholder="Seu nome" value={nameInput === '' ? '' : nameInput} onChange={handleNameInput} />
+                <Input type="number" placeholder="Sua idade" value={ageInput === 0 ? '' : ageInput} onChange={handleAgeInput} />
+                <Input type="number" placeholder="Seu contato" value={contactInput === 0 ? '' : contactInput} onChange={handleContactInput} />                                
                 <Button content="Cadastrar" bgColorButton="#3282B8" icon={OkImg} onClick={handleAddUser} />
             </C.Form>
         </C.Container>
